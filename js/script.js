@@ -1,5 +1,5 @@
 (function () {
-    window.addEventListener('load', MediaQueries)
+
     /*Function avec paramètres target + data mis dans le html */
     function parallaxImg(target, MediaQueriesData) {
         target.forEach(function (el) {
@@ -15,26 +15,32 @@
 
     /*RESPONSIVE*//*RESPONSIVE*/ /*RESPONSIVE*/ /*RESPONSIVE*/
 
-    /*<img  class="parallax" data-parallax-l="-0.5" data-parallax-m="-0.15">*/
-    const img = document.querySelectorAll('.parallax')
-function MediaQueries(){
-    /*https://developer.mozilla.org/en-US/docs/Web/API/Screen/orientation*/
-    if(screen.orientation.type == 'portrait-primary' ){
-        window.addEventListener('scroll', function () {
-            parallaxImg(img, 'data-parallax-m')
-        /*<img  class="parallax" data-parallax-m="-0.15">*/
-        })
-        console.log('mobile')
-       
-    }else{
-        window.addEventListener('scroll', function () {
-            parallaxImg(img, 'data-parallax-l')
-        /*<img  class="parallax" data-parallax-l="-0.5">*/
-        })
-        console.log('laptop')
+    function mobile() {
+        return window.innerWidth < 576
     }
-}
-window.addEventListener('resize', MediaQueries)
+
+    function laptop() {
+        return window.innerWidth < 1024
+    }
+
+    const img = document.querySelectorAll('.parallax')
+
+    function checkDevice() {
+        if (mobile()) {
+            parallaxImg(img, 'data-parallax-m')
+            console.log('mobile')
+            /*<img  class="parallax" data-parallax-m="-0.15">*/
+        }else if(laptop()){
+            console.log('laptop')
+            parallaxImg(img, 'data-parallax-l')
+            /*<img  class="parallax" data-parallax-m="-0.4">*/
+        }else {
+            console.log('desktop')
+            parallaxImg(img, 'data-parallax-d')
+            /*<img  class="parallax" data-parallax-m="-0.6">*/
+        }
+    }
+    window.addEventListener('scroll', checkDevice)
+    window.addEventListener('resize', checkDevice)
 
 })()
-

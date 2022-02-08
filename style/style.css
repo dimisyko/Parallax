@@ -66,7 +66,7 @@ main {
           flex-direction: row-reverse;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .container, .container:nth-child(even) {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
