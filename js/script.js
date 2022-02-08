@@ -1,6 +1,5 @@
 (function () {
-    window.addEventListener('load', mediaQueries)
-    
+    window.addEventListener('load', MediaQueries)
     /*Function avec paramètres target + data mis dans le html */
     function parallaxImg(target, MediaQueriesData) {
         target.forEach(function (el) {
@@ -15,20 +14,27 @@
     }
 
     /*RESPONSIVE*//*RESPONSIVE*/ /*RESPONSIVE*/ /*RESPONSIVE*/
+
+    /*<img  class="parallax" data-parallax-l="-0.5" data-parallax-m="-0.15">*/
     const img = document.querySelectorAll('.parallax')
-    function mediaQueries() {
-        if (window.matchMedia("(max-width : 768px)").matches) {
-
-            window.addEventListener('scroll', function () {
-                parallaxImg(img, 'data-parallaxMobile')
-            })
-
-        }else{
-            window.addEventListener('scroll', function () {
-                parallaxImg(img, 'data-parallaxDesktop')
-            })
-        }
+function MediaQueries(){
+    /*https://developer.mozilla.org/en-US/docs/Web/API/Screen/orientation*/
+    if(screen.orientation.type == 'portrait-primary' ){
+        window.addEventListener('scroll', function () {
+            parallaxImg(img, 'data-parallax-m')
+        /*<img  class="parallax" data-parallax-m="-0.15">*/
+        })
+        console.log('mobile')
+       
+    }else{
+        window.addEventListener('scroll', function () {
+            parallaxImg(img, 'data-parallax-l')
+        /*<img  class="parallax" data-parallax-l="-0.5">*/
+        })
+        console.log('laptop')
     }
-    window.addEventListener('resize', mediaQueries)
+}
+window.addEventListener('resize', MediaQueries)
 
 })()
+

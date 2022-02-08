@@ -50,7 +50,7 @@ main {
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 1024px){
     .container, .container:nth-child(even){
         flex-direction: column;
         .container__img{
