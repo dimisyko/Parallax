@@ -3,12 +3,12 @@
     /*Function avec paramètres target + data mis dans le html */
     function parallaxImg(target, MediaQueriesData) {
         target.forEach(function (el) {
-            const posImg = el.getBoundingClientRect().top - window.innerHeight / 6
+            const posImg = el.getBoundingClientRect().top - window.innerHeight / 10
             const data = el.getAttribute(MediaQueriesData)
             if (-posImg > window.innerHeight || posImg > window.innerHeight) {
-                el.style.transform = 'translate3d(0, ' + false + 'px, 0)'
+                el.style.transform = 'translate3d(0, ' + false + '%, 0)'
             } else {
-                el.style.transform = 'translate3d(0, ' + posImg * data + 'px, 0)'
+                el.style.transform = 'translate3d(0, ' + posImg * data + '%, 0)'
             }
         })
     }
