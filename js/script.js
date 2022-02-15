@@ -1,14 +1,18 @@
 (function () {
 
     /*Function avec paramètres target + data mis dans le html */
+    let init = 0
     function parallaxImg(target, MediaQueriesData) {
+
         target.forEach(function (el) {
-            const posImg = el.getBoundingClientRect().top - window.innerHeight / 10
+            const animImg = el.getBoundingClientRect().top
             const data = el.getAttribute(MediaQueriesData)
-            if (-posImg > window.innerHeight || posImg > window.innerHeight) {
-                el.style.transform = 'translate3d(0, ' + false + '%, 0)'
+            const topImg = window.pageYOffset - el.offsetTop
+            if (topImg > window.innerHeight || -topImg > window.innerHeight) {
+                el.style.transform = 'translate3d(0, ' + false + 'px, 0)'
+
             } else {
-                el.style.transform = 'translate3d(0, ' + posImg * data + '%, 0)'
+                el.style.transform = 'translate3d(0, ' + animImg * data + 'px, 0)'
             }
         })
     }
