@@ -1,7 +1,7 @@
 (function () {
 
     /*Function avec paramètres target + data mis dans le html */
-    let init = 0
+
     function parallaxImg(target, MediaQueriesData) {
 
         target.forEach(function (el) {
