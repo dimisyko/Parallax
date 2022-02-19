@@ -32,18 +32,16 @@
     function checkDevice() {
         if (mobile()) {
             parallaxImg(img, 'data-parallax-m')
-            console.log('mobile')
             /*<img  class="parallax" data-parallax-m="-0.15">*/
         }else if(laptop()){
-            console.log('laptop')
             parallaxImg(img, 'data-parallax-l')
             /*<img  class="parallax" data-parallax-m="-0.4">*/
         }else {
-            console.log('desktop')
             parallaxImg(img, 'data-parallax-d')
             /*<img  class="parallax" data-parallax-m="-0.6">*/
         }
     }
+    window.addEventListener('load', checkDevice)
     window.addEventListener('scroll', checkDevice)
     window.addEventListener('resize', checkDevice)
 
