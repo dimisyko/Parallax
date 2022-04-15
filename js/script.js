@@ -1,39 +1,17 @@
-(function () {
 
-    function parallaxImg(target, MediaQueriesData) {
 
-        target.forEach(function (el) {
-            const animImg = el.getBoundingClientRect().top
-            const data = el.getAttribute(MediaQueriesData)
+    function parallaxImg() {
+        const img = document.querySelectorAll('.parallax')
+        img.forEach(function (el) {
+            const animImg = el.getBoundingClientRect().top / 4
+            const data = el.getAttribute('data-parallax-d')
             const topImg = window.pageYOffset - el.offsetTop
-
+            const pos = animImg * data
             if (topImg > window.innerHeight || -topImg > window.innerHeight) return
                
-            el.style.transform = 'translate3d(0, ' + animImg * data + 'px, 0)'
+            el.style.transform = 'translate3d(0, ' + pos.toFixed(2) + 'px, 0)'
+      
         })
+        requestAnimationFrame(parallaxImg)
     }
-
-    function mobile() {
-        return window.innerWidth < 576
-    }
-
-    function laptop() {
-        return window.innerWidth < 1024
-    }
-
-    const img = document.querySelectorAll('.parallax')
-
-    function checkDevice() {
-        if (mobile()) {
-            parallaxImg(img, 'data-parallax-m')
-        }else if(laptop()){
-            parallaxImg(img, 'data-parallax-l')
-        }else {
-            parallaxImg(img, 'data-parallax-d')
-        }
-    }
-
-    window.addEventListener('load', checkDevice)
-    window.addEventListener('scroll', checkDevice)
-    window.addEventListener('resize', checkDevice)
-})()
+    parallaxImg()
