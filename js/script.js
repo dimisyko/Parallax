@@ -1,5 +1,4 @@
-
-
+(function(){
     function parallaxImg() {
         const img = document.querySelectorAll('.parallax')
         img.forEach(function (el) {
@@ -15,3 +14,4 @@
         requestAnimationFrame(parallaxImg)
     }
     parallaxImg()
+})()
