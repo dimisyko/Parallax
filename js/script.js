@@ -4,7 +4,7 @@ class parallax {
         this.start = start
         this.end = end
         this.calc = calc
-        this.event()
+        this.parallaxScroll()
     }
 
     parallaxScroll() {
@@ -18,10 +18,7 @@ class parallax {
         if (newY > this.end) {
             this.el.style.transform = "translate3d(0," + this.end + "%, 0) scale(1.2)"
         }
-    }
-
-    event() {
-        window.addEventListener('scroll', this.parallaxScroll.bind(this))
+        requestAnimationFrame(this.parallaxScroll.bind(this))
     }
 }
 
