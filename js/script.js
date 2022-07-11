@@ -18,7 +18,11 @@ class parallax {
         if (newY > this.end) {
             this.el.style.transform = "translate3d(0," + this.end + "%, 0) scale(1.2)"
         }
-        requestAnimationFrame(this.parallaxScroll.bind(this))
+       this.raf()
+    }
+    
+    raf(){
+         requestAnimationFrame(this.parallaxScroll.bind(this))
     }
 }
 
